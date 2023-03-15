@@ -4,7 +4,6 @@ pipeline {
     stage ('git') {
       steps {
       git url: 'https://github.com/Kiranteja623/spring-petclinic.git'
-          branch: 'develop'
     }
     }
     stage ('package') {
