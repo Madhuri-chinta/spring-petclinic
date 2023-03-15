@@ -4,7 +4,7 @@ Description=my springpetclinic
 [Service]
 User=ubuntu
 WorkingDirectory=/home/ubuntu
-ExecStart=/usr/lib/jvm/java-17-openjdk-amd64 -jar /home/ubuntu/spring-petclinic-3.0.0-20230315.163147-17.jar
+ExecStart=/usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar /home/ubuntu/spring-petclinic-3.0.0-20230315.163147-17.jar
 Restart=always
 
 [Install]
