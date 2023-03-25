@@ -180,10 +180,17 @@ pipeline {
 ![preview](./pullrequest/images/pr64.png)
 * This springpetclinc application is in develop branch and create & checkout the feature branch
 * Some changes in feature branch and pull request to the develop branch if it is code is correct the build is automatically triggered and accept the pull request in develop branch
+  
 ![preview](./pullrequest/images/pr65.png)
+
 ![preview](./pullrequest/images/pr66.png)
+
 ![preview](./pullrequest/images/pr67.png)
+
 ![preview](./pullrequest/images/pr68.png)
+
 ![preview](./pullrequest/images/pr69.png)
-![preview](./pullrequest/images/pr70.png) 
+
+![preview](./pullrequest/images/pr70.png)
+ 
 ![preview](./pullrequest/images/pr71.png)  
