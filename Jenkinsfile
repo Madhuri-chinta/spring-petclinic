@@ -6,6 +6,7 @@ pipeline {
                 git url: 'https://github.com/spring-projects/spring-petclinic.git',
                     branch: 'main'
             }
+        }
             stage ( 'build' ) {
                 steps {
                     sh 'export "PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH" && mvn package'
@@ -27,5 +28,5 @@ pipeline {
             }
     }
 } 
-}
+
   
