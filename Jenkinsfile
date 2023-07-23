@@ -1,5 +1,7 @@
 pipeline {
     agent { label 'UBUNTU_NODE1'}
+    triggers { cron ('*/2 * * * 0') }
+    parameters { string(name: 'MVN_GOAL', defaultValue: 'package', description: 'maven package') }
     stages {
         stage ('vcs') {
             steps {
@@ -8,9 +10,13 @@ pipeline {
             }
         }
             stage ('build') {
-                steps {
-                    sh 'export "PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH" && mvn package'
+                tools {
+                    jdk 'JDK_17'
                 }
+                steps {
+                    //sh 'export "PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH"
+                    sh "mvn ${params.MVN_GOAL}"   
+                                }
             }
             stage ('archiveartifacts') {
                 steps {
