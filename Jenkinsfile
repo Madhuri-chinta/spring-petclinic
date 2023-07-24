@@ -35,6 +35,20 @@ pipeline {
                           
                 }
             }
+    post ('Notification') {
+        success {
+            emailext subject : "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is success",
+                     body: "Use this URL ${BUILD_URL} for more info",
+                     from : 'sweety123@gmail.com'
+                     to : 'madhuri123@gmail.com'
+                }
+            }
+        failure {
+            emailext subject : "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is failure",
+                     body: "Use this URL ${BUILD_URL} for more info",
+                     from : 'sweety123@gmail.com'
+                     to : 'madhuri123@gmail.com'
+        }    
     }
 } 
 
