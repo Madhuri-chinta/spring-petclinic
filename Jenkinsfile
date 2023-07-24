@@ -36,20 +36,22 @@ pipeline {
                 }
             }
     post {
-        success {
-            mail subject: "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is success",
-                body: "Use this URL ${BUILD_URL} for more info",
-                to: 'sweety123@gmail.com',
-                from: 'madhuri123@gmail.com'
+        stage (Notification) {
+            success {
+                mail subject: "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is success",
+                     body: "Use this URL ${BUILD_URL} for more info",
+                     to: 'sweety123@gmail.com',
+                     from: 'madhuri123@gmail.com'
         }
-        failure {
-            mail subject: "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is failed",
-                body: "Use this URL ${BUILD_URL} for more info",
-                to: "${GIT_AUTHOR_EMAIL}", // here pass environmental variable 
-                from: 'madhuri123@gmail.com'
+            failure {
+                mail subject: "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is failed",
+                     body: "Use this URL ${BUILD_URL} for more info",
+                     to: "${GIT_AUTHOR_EMAIL}", // here pass environmental variable 
+                     from: 'madhuri123@gmail.com'
         }  
     }
 } 
+}
 }
 
   
