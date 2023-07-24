@@ -47,7 +47,8 @@ pipeline {
                      body: "Use this URL ${BUILD_URL} for more info",
                      from : 'sweety123@gmail.com'
                      to : 'madhuri123@gmail.com'
-        }    
+        } 
+    }   
     }
 } 
 
