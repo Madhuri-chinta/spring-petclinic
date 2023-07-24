@@ -46,8 +46,8 @@ pipeline {
         failure {
             mail subject: "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is failed",
                  body: "Use this URL ${BUILD_URL} for more info",
-                 to: "${GIT_AUTHOR_EMAIL}", // here pass environmental variable 
-                 from: 'madhuri123@gmail.com'
+                 to: "${GIT_AUTHOR_EMAIL}", // here pass jenkins environmental variable 
+                 from: "${GIT_COMMITTER_EMAIL}" // here also pass jenkins environmental variable
         }  
     }
 } 
