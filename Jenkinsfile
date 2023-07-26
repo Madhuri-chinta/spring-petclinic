@@ -12,26 +12,33 @@ pipeline {
                     branch: 'main'
             }
         }
-            stage ('build') {
-                tools {
-                    jdk 'JDK_17'
+        stage ('build') {
+            tools {
+                jdk 'JDK_17'
                 }
-                steps {
-                    //sh 'export "PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH" (no tool configuration)
-                    sh "mvn ${params.MVN_GOAL}"   
-                                }
+            steps {
+             //sh 'export "PATH=/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH" (no tool configuration)
+                sh "mvn ${params.MVN_GOAL}"   
+                 }
             }
-            stage ('archiveartifacts') {
-                steps {
-                    archiveArtifacts artifacts: '**/target/spring-petclinic-3.1.0-SNAPSHOT.jar', 
-                                     onlyIfSuccessful: true,
-                                     allowEmptyArchive : false        
+        stage ('Sonarqube Analysis') {
+            steps {
+                withSonarQubeEnv('SONAR_CLOUD') {
+                    sh 'mvn clean package sonar:sonar' //-Dsonar.projectKey="Jenkins123" -Dsonar.projectName="Jenkins"'
+           }
+       }
+        } 
+        stage ('archiveartifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/target/spring-petclinic-3.1.0-SNAPSHOT.jar', 
+                                 onlyIfSuccessful: true,
+                                 allowEmptyArchive : false        
             }
         }
-            stage ('testresults') {
-                steps {
-                    junit testResults: '**/surefire-reports/TEST-*.xml',
-                          allowEmptyResults : true
+        stage ('testresults') {
+            steps {
+                junit testResults: '**/surefire-reports/TEST-*.xml',
+                      allowEmptyResults : true
                           
                 }
             }
