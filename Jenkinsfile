@@ -9,7 +9,7 @@ pipeline {
         stage ('vcs') {
             steps {
                 git url: 'https://github.com/spring-projects/spring-petclinic.git',
-                    branch: 'main'
+                    branch: 'st'
             }
         }
         stage ('build') {
