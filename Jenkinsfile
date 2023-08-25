@@ -19,7 +19,7 @@ pipeline {
        stage ('scan and push') {
            steps {
                sh 'echo docker scan madhurichinta/sweety:latest'
-               sh 'docker image scan madhurichinta/sweety:latest'
+               sh 'docker image push madhurichinta/sweety:latest'
            }
        }
   }
