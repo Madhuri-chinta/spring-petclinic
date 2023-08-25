@@ -22,5 +22,10 @@ pipeline {
                sh 'docker image push madhurichinta/sweety:latest'
            }
        }
+       stage ('deployment') {
+           steps {
+               sh 'kubectl apply -f deployment.yaml'
+           }
+       }
   }
 }
