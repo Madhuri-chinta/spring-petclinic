@@ -11,5 +11,16 @@ pipeline {
                     branch: 'main'
         }   
      }
+       stage ('Build') {
+           steps {
+               sh 'docker image build -t madhurichinta/sweety:latest .'
+        }
+       }
+       stage ('scan and push') {
+           steps {
+               sh 'echo docker scan madhurichinta/sweety:latest'
+               sh 'docker image scan madhurichinta/sweety:latest'
+           }
+       }
   }
 }
