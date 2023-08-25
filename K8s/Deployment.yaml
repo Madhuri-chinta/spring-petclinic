@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sweety-deployment
+  labels:
+    app: sweety
+spec:
+  minReadySeconds: 2
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sweety
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: sweety
+      name: sweety-pod
+    spec:
+      containers:
+        - image: madhurichinta/sweety:latest
+          name: sweety-container
+          ports:
+            - name: sweety-port
+              protocol: TCP
+              containerPort: 8080
+          livenessProbe: 
+            httpGet:
+              path: /
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080  
+
+
