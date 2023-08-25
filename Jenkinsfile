@@ -1,8 +1,8 @@
 pipeline {
     agent { label 'UBUNTU_NODE1'}
-    triggers {
-        pollSCM ('* * * * *')
-    }
+    //triggers {
+        //pollSCM ('* * * * *')
+   // }
     //parameters { choice(name: 'MVN_GOAL', choices: ['package', 'install', 'test'], description: 'maven package') }
     stages {
         stage ('VCS') {
