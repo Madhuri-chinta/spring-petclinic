@@ -3,7 +3,7 @@ pipeline {
     triggers {
         pollSCM ('* * * * *')
     }
-    parameters { choice(name: 'MVN_GOAL', choices: ['package', 'install', 'test'], description: 'maven package') }
+    //parameters { choice(name: 'MVN_GOAL', choices: ['package', 'install', 'test'], description: 'maven package') }
     stages {
         stage ('VCS') {
             steps { 
